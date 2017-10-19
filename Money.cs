@@ -44,10 +44,7 @@ namespace ClassesAndObjectsTask4
         }
 
         // Метод для вывода номинала и количества купюр;
-        public override string ToString()
-        {
-            return $"У Вас в кармане {quantityNotes} куп. номиналом {nominal} грн.";
-        }
+        public override string ToString() => $"У Вас в кармане {quantityNotes} куп. номиналом {nominal} грн.";
 
         // Метод, определяющий, хватит ли денежных средств на покупку товара на сумму N гривен.
         public string CheckAvailability(double costOfGoods)
