@@ -44,7 +44,10 @@ namespace ClassesAndObjectsTask4
         }
 
         // Метод для вывода номинала и количества купюр;
-        public override string ToString() => $"У Вас в кармане {quantityNotes} купюр номиналом {nominal} грн.";
+        public override string ToString()
+        {
+            return $"У Вас в кармане {quantityNotes} куп. номиналом {nominal} грн.";
+        }
 
         // Метод, определяющий, хватит ли денежных средств на покупку товара на сумму N гривен.
         public string CheckAvailability(double costOfGoods)
@@ -80,7 +83,7 @@ namespace ClassesAndObjectsTask4
             get => quantityNotes;
             set => quantityNotes = value;
         }
-        
+
         // Свойство, позволяющее рассчитать сумму денег (доступное только для чтения).
         public int TotalCash
         {
@@ -89,7 +92,7 @@ namespace ClassesAndObjectsTask4
 
         // Индексатор, позволяющий по индексу 0 обращаться к полю first, по индексу 1 – к полю second, 
         // при других значениях индекса выдается сообщение об ошибке.
-        public string this [int index]
+        public string this[int index]
         {
             get
             {
@@ -106,11 +109,31 @@ namespace ClassesAndObjectsTask4
         }
 
         // Перегрузка операции ++: одновременно увеличивает значение полей first и second;
+        public static Money operator ++(Money m) => new Money(++m.nominal, ++m.quantityNotes);
 
         // Перегрузка операции --: одновременно уменьшает значение полей first и second;
+        public static Money operator --(Money m) => new Money(--m.nominal, --m.quantityNotes);
 
         // Перегрузка операции !: возвращает значение true, если поле second не нулевое, иначе false;
+        public static bool operator true(Money qn)
+        {
+            if (qn.quantityNotes != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator false(Money qn)
+        {
+            if (qn.quantityNotes == 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         // Перегрузка операции бинарный +: добавляет к значению поля second значение скаляра.
+        public static Money operator +(Money m, int scalar) => new Money(m.nominal, m.quantityNotes + scalar);
     }
 }
