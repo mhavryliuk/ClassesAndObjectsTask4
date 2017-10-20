@@ -106,24 +106,18 @@ namespace ClassesAndObjectsTask4
         }
 
         // Перегрузка операции ++: одновременно увеличивает значение полей first и second;
-        public static Money operator ++(Money m) => new Money(++m.nominal, ++m.quantityNotes);
+        public static Money operator ++(Money m)
+        {
+            return new Money(++m.nominal, ++m.quantityNotes);
+        }
 
         // Перегрузка операции --: одновременно уменьшает значение полей first и second;
         public static Money operator --(Money m) => new Money(--m.nominal, --m.quantityNotes);
 
         // Перегрузка операции !: возвращает значение true, если поле second не нулевое, иначе false;
-        public static bool operator true(Money qn)
+        public static bool operator !(Money qn)
         {
             if (qn.quantityNotes != 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool operator false(Money qn)
-        {
-            if (qn.quantityNotes == 0)
             {
                 return true;
             }

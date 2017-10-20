@@ -25,7 +25,7 @@ namespace ClassesAndObjectsTask4
             Console.WriteLine(--purse);                            // Перегрузка операции --
             Console.WriteLine(purse+50);                           // Добавление к координатам значения скаляра
 
-            if (purse)                                             // Перегрузка операции !
+            if (!purse)                                             // Перегрузка операции !
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("Количество купюр не равно 0, Вы счачтливчик!");
